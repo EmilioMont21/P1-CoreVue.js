@@ -67,7 +67,7 @@ for (let i = 0; i < deparNoRe.length; i++) {
     })
 }
 
-
+console.log(contador)
 export default {
     data(){
         return{
