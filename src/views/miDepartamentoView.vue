@@ -118,7 +118,7 @@ export default{
     },
 
     consultarActividades(){
-            fetch('http://localhost/ING_WEB/actividad.php')
+            fetch('https://vueprojectp2.000webhostapp.com/actividad.php')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.actividades=[]
@@ -134,7 +134,7 @@ export default{
         },
 
     consultarMetas(){
-            fetch('http://localhost/ING_WEB/metas.php')
+            fetch('https://vueprojectp2.000webhostapp.com/metas.php')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.metas=[]
@@ -150,7 +150,7 @@ export default{
         },
 
     eliminarActividad(id){
-            fetch('http://localhost/ING_WEB/actividad.php/?IDactividad='+id,{
+            fetch('https://vueprojectp2.000webhostapp.com/actividad.php/?IDactividad='+id,{
                 method:'DELETE',
                 headers: {'Content-Type': 'application/json'},
             })
@@ -158,7 +158,7 @@ export default{
         },
 
     eliminarMeta(id){
-            fetch('http://localhost/ING_WEB/metas.php/?IDmetas='+id,{
+            fetch('https://vueprojectp2.000webhostapp.com/metas.php/?IDmetas='+id,{
                 method:'DELETE',
                 headers: {'Content-Type': 'application/json'},
             })
@@ -172,26 +172,26 @@ export default{
 
     let actividades = []
 
-    const actividadData = await axios.get('http://localhost/ING_WEB/actividad.php')
+    const actividadData = await axios.get('https://vueprojectp2.000webhostapp.com/actividad.php')
     actividadData.data.forEach(d => {
       actividades.push(d)
     });
 
     let metas = []
 
-    const metaData = await axios.get('http://localhost/ING_WEB/metas.php')
+    const metaData = await axios.get('https://vueprojectp2.000webhostapp.com/metas.php')
     metaData.data.forEach(d => {
       metas.push(d)
     });
 
     let departamentos = []
-    const departamentoData = await axios.get('http://localhost/ING_WEB/departamento.php')
+    const departamentoData = await axios.get('https://vueprojectp2.000webhostapp.com/departamento.php')
       departamentoData.data.forEach(d => {
         departamentos.push(d)
     });
 
     let empleados = []
-    const empleadoData = await axios.get('http://localhost/ING_WEB/user.php')
+    const empleadoData = await axios.get('https://vueprojectp2.000webhostapp.com/user.php')
     empleadoData.data.forEach(d => {
       empleados.push(d)
     });

@@ -38,7 +38,7 @@
      },
      methods:{
          obtenerDepartamento(){
-             fetch('http://localhost/ING_WEB/departamento.php/?IDdepartamento='+this.$route.params.id)
+             fetch('https://vueprojectp2.000webhostapp.com/departamento.php/?IDdepartamento='+this.$route.params.id)
              .then(respuesta=>respuesta.json())
              .then((datosRespuesta)=>{
                  this.departamento=datosRespuesta[0]; 
@@ -50,7 +50,7 @@
          },
  
          editarDepartamento(){
-             fetch('http://localhost/ING_WEB/departamento.php',{
+             fetch('https://vueprojectp2.000webhostapp.com/departamento.php',{
                  method:"PUT",
                  headers: {'Content-Type': 'application/json'},
                  body: JSON.stringify({

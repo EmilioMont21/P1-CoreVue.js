@@ -61,7 +61,7 @@ export default {
     },
     methods:{
         obtenerUsuario(){
-            fetch('http://localhost/ING_WEB/user.php/?IDusuario='+this.$route.params.id)
+            fetch('https://vueprojectp2.000webhostapp.com/user.php/?IDusuario='+this.$route.params.id)
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.usuario=datosRespuesta[0]; 
@@ -97,7 +97,7 @@ export default {
                 }
             }
 
-            fetch('http://localhost/ING_WEB/user.php',{
+            fetch('https://vueprojectp2.000webhostapp.com/user.php',{
                 method:"PUT",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -116,7 +116,7 @@ export default {
         },
 
         consultarDepartamentos(){
-            fetch('http://localhost/ING_WEB/departamento.php')
+            fetch('https://vueprojectp2.000webhostapp.com/departamento.php')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 if(typeof datosRespuesta[0].success==='undefined'){ 

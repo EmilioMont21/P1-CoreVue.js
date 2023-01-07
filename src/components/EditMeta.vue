@@ -53,7 +53,7 @@
             window.location.href='/midepartamento/'+cookies.getUserDep()
         },
         obtenerMeta(){
-            fetch('http://localhost/ING_WEB/metas.php/?IDmetas='+this.$route.params.id)
+            fetch('https://vueprojectp2.000webhostapp.com/metas.php/?IDmetas='+this.$route.params.id)
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.meta=datosRespuesta[0]; 
@@ -72,7 +72,7 @@
             this.meta.estado = 3
         }
 
-        fetch('http://localhost/ING_WEB/metas.php',{
+        fetch('https://vueprojectp2.000webhostapp.com/metas.php',{
             method:"PUT",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

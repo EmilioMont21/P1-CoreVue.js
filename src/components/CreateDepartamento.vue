@@ -44,7 +44,7 @@ export default {
                 Descripcion: this.departamento.Descripcion,
             }
 
-            fetch('http://localhost/ING_WEB/departamento.php',{
+            fetch('https://vueprojectp2.000webhostapp.com/departamento.php',{
                 method:"POST",
                 body:JSON.stringify(datosEnviar)
             })

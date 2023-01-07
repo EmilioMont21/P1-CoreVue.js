@@ -107,7 +107,7 @@ export default {
             let actividades = []
 
 
-            const actividadData = await axios.get('http://localhost/ING_WEB/actividad.php')
+            const actividadData = await axios.get('https://vueprojectp2.000webhostapp.com/actividad.php')
             actividadData.data.forEach(d => {
                 actividades.push(d)
             });
@@ -141,7 +141,7 @@ export default {
             // METAS
             let metas = []
 
-            const metaData = await axios.get('http://localhost/ING_WEB/metas.php')
+            const metaData = await axios.get('https://vueprojectp2.000webhostapp.com/metas.php')
             metaData.data.forEach(d => {
                 metas.push(d)
             });

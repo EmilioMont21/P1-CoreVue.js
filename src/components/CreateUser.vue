@@ -90,7 +90,7 @@ export default {
                 Departamento: this.usuario.Departamento,
             }
 
-            fetch('http://localhost/ING_WEB/user.php',{
+            fetch('https://vueprojectp2.000webhostapp.com/user.php',{
                 method:"POST",
                 body:JSON.stringify(datosEnviar)
             })
@@ -98,7 +98,7 @@ export default {
         },
 
         consultarDepartamentos(){
-            fetch('http://localhost/ING_WEB/departamento.php')
+            fetch('https://vueprojectp2.000webhostapp.com.php')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 if(typeof datosRespuesta[0].success==='undefined'){ 

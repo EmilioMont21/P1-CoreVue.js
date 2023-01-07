@@ -71,7 +71,7 @@ export default{
     },
     methods:{
       consultarUsuarios(){
-            fetch('http://localhost/ING_WEB/user.php')
+            fetch('https://vueprojectp2.000webhostapp.com/user.php')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.usuarios=[]
@@ -92,19 +92,19 @@ export default{
       this.consultarUsuarios()
 
       let actividades = []
-      const actividadData = await axios.get('http://localhost/ING_WEB/actividad.php')
+      const actividadData = await axios.get('https://vueprojectp2.000webhostapp.com/actividad.php')
       actividadData.data.forEach(d => {
         actividades.push(d)
       });
 
       let departamentos = []
-      const departamentoData = await axios.get('http://localhost/ING_WEB/departamento.php')
+      const departamentoData = await axios.get('https://vueprojectp2.000webhostapp.com/departamento.php')
         departamentoData.data.forEach(d => {
           departamentos.push(d)
       });
 
       let empleados = []
-      const empleadoData = await axios.get('http://localhost/ING_WEB/user.php')
+      const empleadoData = await axios.get('https://vueprojectp2.000webhostapp.com/user.php')
       empleadoData.data.forEach(d => {
         empleados.push(d)
       });

@@ -32,7 +32,7 @@ import cookies from "@/router/cookies";
     methods: {
       
     login() {
-        fetch('http://localhost/ING_WEB/user.php?Mail=' +this.email+ ' &Password='+this.password )
+        fetch('https://vueprojectp2.000webhostapp.com/user.php?Mail=' +this.email+ ' &Password='+this.password )
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                  if(datosRespuesta != ""){

@@ -84,7 +84,7 @@ export default {
         },
         //localhost/ING_WEB/php/
         consultarUsuarios(){
-            fetch('http://localhost/ING_WEB/user.php')
+            fetch('https://vueprojectp2.000webhostapp.com/user.php')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.usuarios=[]
@@ -95,7 +95,7 @@ export default {
             .catch(console.log)
         },
         eliminarUsuario(id){
-            fetch('http://localhost/ING_WEB/user.php/?IDusuario='+id,{
+            fetch('https://vueprojectp2.000webhostapp.com/user.php/?IDusuario='+id,{
                 method:'DELETE',
                 headers: {'Content-Type': 'application/json'},
             })
@@ -110,13 +110,13 @@ export default {
 
       let departamentos = []
 
-      const departamentoData = await axios.get('http://localhost/ING_WEB/departamento.php')
+      const departamentoData = await axios.get('https://vueprojectp2.000webhostapp.com/departamento.php')
       departamentoData.data.forEach(d => {
         departamentos.push(d)
       });
       
       let empleadosObj = []
-      const empleadoData = await axios.get('http://localhost/ING_WEB/user.php')
+      const empleadoData = await axios.get('https://vueprojectp2.000webhostapp.com/user.php')
       empleadoData.data.forEach(d => {
           empleadosObj.push(d)
       });
@@ -136,7 +136,7 @@ export default {
 
       let actividades = []
 
-      const actividadData = await axios.get('http://localhost/ING_WEB/actividad.php')
+      const actividadData = await axios.get('https://vueprojectp2.000webhostapp.com/actividad.php')
       actividadData.data.forEach(d => {
         actividades.push(d)
       });

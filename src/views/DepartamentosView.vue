@@ -81,7 +81,7 @@ export default {
         },
         //localhost/ING_WEB/php/
         consultarDepartamentos(){
-            fetch('http://localhost/ING_WEB/departamento.php')
+            fetch('https://vueprojectp2.000webhostapp.com/departamento.php')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.departamentos=[]
@@ -92,7 +92,7 @@ export default {
             .catch(console.log)
         },
         eliminarDepartamento(id){
-            fetch('http://localhost/ING_WEB/departamento.php?IDdepartamento='+id,{
+            fetch('https://vueprojectp2.000webhostapp.com/departamento.php?IDdepartamento='+id,{
                 method:'DELETE',
                 headers: {'Content-Type': 'application/json'},
             })
@@ -105,7 +105,7 @@ export default {
 
       let departamentos = []
 
-      const departamentoData = await axios.get('http://localhost/ING_WEB/departamento.php')
+      const departamentoData = await axios.get('https://vueprojectp2.000webhostapp.com/departamento.php')
       departamentoData.data.forEach(d => {
         departamentos.push(d)
       });
@@ -114,7 +114,7 @@ export default {
 
       
     let empleadosObj = []
-    const empleadoData = await axios.get('http://localhost/ING_WEB/user.php')
+    const empleadoData = await axios.get('https://vueprojectp2.000webhostapp.com/user.php')
     empleadoData.data.forEach(d => {
         empleadosObj.push(d)
     });
@@ -179,14 +179,14 @@ export default {
 
           let actividades = []
 
-          const actividadData = await axios.get('http://localhost/ING_WEB/actividad.php')
+          const actividadData = await axios.get('https://vueprojectp2.000webhostapp.com/actividad.php')
           actividadData.data.forEach(d => {
             actividades.push(d)
           });
 
           let metas = []
 
-          const metaData = await axios.get('http://localhost/ING_WEB/metas.php')
+          const metaData = await axios.get('https://vueprojectp2.000webhostapp.com/metas.php')
           metaData.data.forEach(d => {
             metas.push(d)
           });

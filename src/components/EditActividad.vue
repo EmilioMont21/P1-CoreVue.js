@@ -62,7 +62,7 @@
             window.location.href='/midepartamento/'+cookies.getUserDep()
         },
         obtenerActividad(){
-            fetch('http://localhost/ING_WEB/actividad.php/?IDactividad='+this.$route.params.id)
+            fetch('https://vueprojectp2.000webhostapp.com/actividad.php/?IDactividad='+this.$route.params.id)
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 this.actividad=datosRespuesta[0]; 
@@ -70,7 +70,7 @@
             .catch(console.log)
         },
         obtenerUsuarios(){
-            fetch('http://localhost/ING_WEB/user.php?Departamento='+cookies.getUserDep())
+            fetch('https://vueprojectp2.000webhostapp.com/user.php?Departamento='+cookies.getUserDep())
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 for (let i = 0; i < datosRespuesta.length; i++) {
@@ -100,7 +100,7 @@
                 }
             });
 
-            fetch('http://localhost/ING_WEB/actividad.php',{
+            fetch('https://vueprojectp2.000webhostapp.com/actividad.php',{
                 method:"PUT",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

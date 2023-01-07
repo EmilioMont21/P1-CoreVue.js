@@ -53,7 +53,7 @@ export default {
                 fechaFin: this.meta.fechaFin,
             }
 
-            fetch('http://localhost/ING_WEB/metas.php',{
+            fetch('https://vueprojectp2.000webhostapp.com/metas.php',{
                 method:"POST",
                 body:JSON.stringify(datosEnviar)
             })

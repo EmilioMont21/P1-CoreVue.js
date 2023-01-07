@@ -49,7 +49,7 @@ export default {
     },
     methods:{
         obtenerUsuarios(){
-            fetch('http://localhost/ING_WEB/user.php?Departamento='+this.$route.params.id)
+            fetch('https://vueprojectp2.000webhostapp.com/user.php?Departamento='+this.$route.params.id)
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
                 for (let i = 0; i < datosRespuesta.length; i++) {
@@ -83,7 +83,7 @@ export default {
                 fechaFin: this.actividad.fechaFin,
             }
 
-            fetch('http://localhost/ING_WEB/actividad.php',{
+            fetch('https://vueprojectp2.000webhostapp.com/actividad.php',{
                 method:"POST",
                 body:JSON.stringify(datosEnviar)
             })
