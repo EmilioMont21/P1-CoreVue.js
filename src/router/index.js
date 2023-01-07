@@ -16,6 +16,7 @@ import EditMeta from '@/components/EditMeta.vue'
 import EditActividad from '@/components/EditActividad.vue'
 import EmpleadoHomeView from '@/views/EmpleadoHomeView.vue'
 import miPerfilView from '@/views/miPerfilView.vue'
+import FechasView from '@/views/fechasView.vue'
 
 import cookies from "@/router/cookies";
 
@@ -44,6 +45,26 @@ const routes = [
     path: '/usuarios',
     name: 'UsuariosView',
     component: UsuariosView,
+    beforeEnter: (to, from, next) => {
+      if(cookies.getUserLogged() == undefined){
+        next("/login");
+      }else{
+        if(cookies.getUserRol() == 1){
+          next();
+        }
+        if(cookies.getUserRol() == 2){
+          next("/gerentehome");
+        }
+        if(cookies.getUserRol() == 3){
+          next("/empleado/"+ cookies.getUserId());
+        } 
+      }
+    }
+  },
+  {
+    path: '/fechas',
+    name: 'FechasView',
+    component: FechasView,
     beforeEnter: (to, from, next) => {
       if(cookies.getUserLogged() == undefined){
         next("/login");

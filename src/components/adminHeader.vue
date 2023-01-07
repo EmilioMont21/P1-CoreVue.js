@@ -3,6 +3,7 @@
         <button type="button"  v-on:click="deleteUserLogged()" ><b>Logout</b></button>
         <router-link to="/usuarios">Empleados</router-link> 
         <router-link to="/departamentos">Departamentos</router-link> 
+        <router-link to="/fechas">Fechas</router-link> 
         <router-link to="/">Home</router-link> 
     </nav>
 </template>
