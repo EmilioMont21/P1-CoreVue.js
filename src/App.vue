@@ -3,24 +3,13 @@
 </template>
 
 <style>
-#app {
-  background-image: linear-gradient(135deg, #ffffff 10%, #f1f1f1 100%);
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
-}
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #6C63FF;
-}
+  body{
+    padding: 0;
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    background-color: #f0f2f4;
+  }
 </style>

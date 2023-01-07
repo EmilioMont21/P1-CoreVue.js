@@ -1,130 +1,119 @@
 <template>
-  <div class="main-container">
 
-    <div class="left-container">
+  <div class="login">
+    <h1 class="title">Inicia Sesion</h1>
+    <form class="form" @submit.prevent="login">
       <div class="imgcontainer">
         <img src="../images/undraw_analytics_re_dkf8.svg" alt="Avatar" class="avatar">
       </div>
-    </div>
-
-    <div class="right-container">
-      <form >
-        <h2>Iniciar Sesion</h2>
-        <div class="container">
-          <label for="Mail"><b>Correo</b></label>
-          <input type="text" placeholder="Ingrese su correo" name="Mail" required>
-
-          <label for="Password"><b>Contraseña</b></label>
-          <input type="password" placeholder="Ingrese su contraseña" name="Password" required>
-
-          <button type="submit"><b>Login</b></button>
-        </div>
-      </form>
-    </div>
+      <label class="form-label" for="#email">Email:</label>
+      <input v-model="email" class="form-input" type="email" id="email" required placeholder="Email">
+      <label class="form-label" for="#password">Password:</label>
+      <input v-model="password" class="form-input" type="password" id="password" placeholder="Password">
+      <p v-if="error" class="error">Los datos ingresados no son correctos</p>
+      <input class="form-submit" type="submit" value="Login">
+    </form>
   </div>
+
  
 </template>
 
-<style>
-body{
-  background-image: linear-gradient(135deg, #ffffff 10%, #f1f1f1 100%);
-  font-family: "Open Sans", sans-serif;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+<script>
 
-  
-.main-container{
-  margin: auto;
-  width: 1000px;
-  background: #FFFFFF;
-  border-radius: 5px;
-  overflow: hidden;
+import cookies from "@/router/cookies";
+
+  export default {
+    data: () => ({
+      email: "",
+      password: "",
+      error: false
+    }),
+
+    methods: {
+      
+    login() {
+        fetch('http://localhost/ING_WEB/user.php?Mail=' +this.email+ ' &Password='+this.password )
+            .then(respuesta=>respuesta.json())
+            .then((datosRespuesta)=>{
+                 if(datosRespuesta != ""){
+                    cookies.setUserLogged(datosRespuesta[0].Mail)
+                    cookies.setUserRol(datosRespuesta[0].Rol)
+                    cookies.setUserDep(datosRespuesta[0].Departamento)
+                    cookies.setUserId(datosRespuesta[0].IDusuario)
+
+                    if(datosRespuesta[0].Rol == 1){
+                      this.$router.push("/")
+                    }
+                    if(datosRespuesta[0].Rol == 2){
+                      this.$router.push("/gerentehome")
+                    }
+                    if(datosRespuesta[0].Rol == 3){
+                      this.$router.push("/empleado/"+datosRespuesta[0].Departamento)
+                    } 
+                 }else{
+                  this.error = true;
+                 }
+            })
+      }
+    }
+
+  };
+</script>
+
+<style scoped>
+
+.login {
+  padding: 2rem;
+}
+.title {
+  text-align: center;
+}
+.form {
+  margin: 3rem auto;
   display: flex;
-  box-shadow: 0 0 20px 2px #74747485;
-}
-
-@media (max-width: 980px) {
-  .main-container{
-    flex-flow: wrap;
-    text-align: center;
-    align-content: center;
-    align-items: center;
-    width: 90%;
-  }
-}
-
-.main-container div {
-  height: auto;
-}
-
-.main-container .left-container{
-  margin: auto;
-  overflow: hidden;
-}
-
-.main-container .left-container .imgcontainer{
-  padding: 10px;
-}
-
-.main-container .left-container .imgcontainer img{
-  margin: auto;
-  width: 500px;
-}
-
-.main-container .right-container{
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+  min-width: 350px;
+  max-width: 100%;
+  background: linear-gradient(67deg, rgba(81,89,101,1) 0%, rgba(101,108,120,1) 100%);
+  border-radius: 5px;
   padding: 40px;
-  overflow: hidden;
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
+}
+.form-label {
+  margin-top: 2rem;
+  color: white;
+  margin-bottom: 0.5rem;
 }
 
-@media (max-width: 980px) {
-  .main-container .right-container {
-    width: 100%;
-  }
+.form-input {
+  padding: 10px 15px;
+  background: none;
+  background-image: none;
+  border: 1px solid white;
+  color: white;
 }
-
-.main-container .right-container h2{
-  font-size: 50px;
-  line-height: 0;
-}
-
-@media (max-width: 980px) {
-  .main-container .right-container h2 {
-    font-size: 2rem;
-    width: 100%;
-  }
-}
-
-.main-container .right-container .container{
-  overflow: hidden;
-}
-
-.main-container .right-container .container input{
-  width: 100%;
-  padding: 10px;
-  margin: 5px;
-  font-size: 16px;
+.form-submit {
+  background: #686ef5;
   border: none;
-  outline: none;
-  border-bottom: 2px solid #B0B3B9;
-}
-
-.main-container .right-container .container button{
-  color: #fff;
-  font-size: 16px;
-  margin-top: 10px;
-  padding: 12px 35px;
-  border-radius: 50px;
-  display: inline-block;
-  border: 0;
-  outline: 0;
+  color: white;
+  margin-top: 3rem;
+  padding: 1rem 0;
   cursor: pointer;
-  background-image: linear-gradient(135deg, #6C63FF 10%, #5b54db 100%);
+  transition: background 0.2s;
 }
 
-button:hover{
-  background-image: linear-gradient(135deg, #010102 10%, #5b54db 100%);
+.form-submit:hover{
+  text-align: center;
+  background: #4e53b8;
 }
 
+.imgcontainer{
+  text-align: center;
+}
+
+img{
+  width: 350px;
+}
 </style>

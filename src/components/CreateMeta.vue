@@ -2,21 +2,28 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                Agregar nuevo Departamento
+                Agregar nueva meta
             </div>
             <div class="card-body">
-                <form v-on:submit.prevent="agregarDepartamento">
+                <form v-on:submit.prevent="agregarMeta">
                     <div class="form-labels">
-                        <label for="Nombre"><b>Nombre</b></label>
-                        <input type="text" placeholder="Ingrese el nombre" v-model="departamento.Nombre" name="Nombre" required>
+                        <label for="Titulo"><b>Titulo</b></label>
+                        <input type="text" placeholder="Ingrese el titulo" v-model="meta.nombre" name="Titulo" required>
                         
                         <label for="Descripcion"><b>Descripcion</b></label>
-                        <input type="text" placeholder="Ingrese la descripcion" v-model="departamento.Descripcion"  name="Apellido" required>
+                        <input type="text" placeholder="Ingrese la descripcion" v-model="meta.descripcion"  name="Descripcion" required>
+
+                        <label for="FechaInicio"><b>Fecha inicio</b></label>
+                        <input type="date" v-model="meta.fechaIni" />
+
+                        <label for="FechaFin"><b>Fecha Fin</b></label>
+                        <input type="date" v-model="meta.fechaFin" />
+
                     </div>
                  
                     <div class="botones">
-                        <button class="btn-Cancelar" type="button"  v-on:click="salirCrearDepartamento()" ><b>Cancelar</b></button>
-                        <button class="btn-Crear" type="submit"><b>Crear</b></button>
+                        <button class="btn-Regresar" type="button"  v-on:click="salirCrearMeta()" ><b>Regresar</b></button>
+                        <button class="btn-Agregar" type="submit"><b>Agregar</b></button>
                     </div>
                 </form>
             </div>
@@ -28,27 +35,29 @@
 export default {
     data(){
         return{
-            departamento:{
-
-            }
+            meta:{}
         }
     },
     methods:{
-        salirCrearDepartamento(){
-            window.location.href='departamentos'
+        salirCrearMeta(){
+            window.location.href='/midepartamento/2'
         },
 
-        agregarDepartamento(){
+        agregarMeta(){
             var datosEnviar={
-                Nombre: this.departamento.Nombre,
-                Descripcion: this.departamento.Descripcion,
+                nombre: this.meta.nombre,
+                descripcion: this.meta.descripcion,  
+                departamento: this.$route.params.id,
+                fechaIni: this.meta.fechaIni,
+                estado: 3,
+                fechaFin: this.meta.fechaFin,
             }
 
-            fetch('http://localhost/ING_WEB/departamento.php',{
+            fetch('http://localhost/ING_WEB/metas.php',{
                 method:"POST",
                 body:JSON.stringify(datosEnviar)
             })
-            .then(window.location.href='departamentos')
+            .then(window.location.href='/midepartamento/2')
         }
     }
 }
@@ -85,11 +94,11 @@ export default {
     padding: 10px;
     }
 
-    .btn-Crear{
+    .btn-Agregar{
         background-color: #04AA6D;
     }
 
-    .btn-Cancelar{
+    .btn-Regresar{
         background-color: #ff4949;
     }
 
